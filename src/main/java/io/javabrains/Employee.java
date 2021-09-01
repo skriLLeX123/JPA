@@ -8,6 +8,7 @@ import java.util.List;
 
 @Entity
 @Table(name="EMPLOYEE_DATA")
+@NamedQuery(query = "Select e from Employee e where e.name = :name", name = "emp age desc")
 public class Employee {
 
     @Id
@@ -39,6 +40,7 @@ public class Employee {
 
     @OneToMany(mappedBy = "employee", cascade = CascadeType.REMOVE)
     private List<PayStub> payStub = new ArrayList<>();
+
 
     public int getId() {
         return id;
@@ -128,7 +130,7 @@ public class Employee {
         this.emailGroups.add(emailGroup);
     }
 
-    @Override
+   @Override
     public String toString() {
         return "Employee{" +
                 "id=" + id +
